@@ -1,8 +1,4 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
+--Unfinished :D
 local ABCD1234 = Instance.new("ScreenGui")
 local MainFrame = Instance.new("ScrollingFrame")
 local MainTXTLabel = Instance.new("TextLabel")
