@@ -19,6 +19,8 @@ MainFrame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
 MainFrame.BorderSizePixel = 0
 MainFrame.Position = UDim2.new(0.0253275111, 0, 0.182423443, 0)
 MainFrame.Size = UDim2.new(0, 377, 0, 169)
+MainFrame.Active = true
+MainFrame.Draggable = true
 
 Title.Name = "Title"
 Title.Parent = MainFrame
