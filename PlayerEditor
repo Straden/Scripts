@@ -1,0 +1,157 @@
+local ScellepPlayerEditor = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Creds = Instance.new("TextLabel")
+local SpeedBox = Instance.new("TextBox")
+local SpeedLabel = Instance.new("TextLabel")
+local DefualtSpeedLabel = Instance.new("TextLabel")
+local JumpLabel = Instance.new("TextLabel")
+local DeafualtJumpLabel = Instance.new("TextLabel")
+local JumpBox = Instance.new("TextBox")
+
+ScellepPlayerEditor.Name = "ScellepPlayerEditor"
+ScellepPlayerEditor.Parent = game.CoreGui
+ScellepPlayerEditor.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScellepPlayerEditor
+MainFrame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.0253275111, 0, 0.182423443, 0)
+MainFrame.Size = UDim2.new(0, 377, 0, 169)
+
+Title.Name = "Title"
+Title.Parent = MainFrame
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.Position = UDim2.new(0.103448272, 0, 0, 0)
+Title.Size = UDim2.new(0, 298, 0, 50)
+Title.Font = Enum.Font.Arial
+Title.Text = "Scellep Player Editor"
+Title.TextColor3 = Color3.fromRGB(0, 255, 255)
+Title.TextSize = 32.000
+
+Creds.Name = "Creds"
+Creds.Parent = MainFrame
+Creds.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Creds.BackgroundTransparency = 1.000
+Creds.Position = UDim2.new(0.379310369, 0, 0.3125, 0)
+Creds.Size = UDim2.new(0, 90, 0, 21)
+Creds.Font = Enum.Font.Arial
+Creds.Text = "Throit#0699"
+Creds.TextColor3 = Color3.fromRGB(0, 255, 255)
+Creds.TextSize = 16.000
+
+SpeedBox.Name = "SpeedBox"
+SpeedBox.Parent = MainFrame
+SpeedBox.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+SpeedBox.BorderColor3 = Color3.fromRGB(255, 255, 255)
+SpeedBox.Position = UDim2.new(0.419098139, 0, 0.496745586, 0)
+SpeedBox.Size = UDim2.new(0, 64, 0, 31)
+SpeedBox.Font = Enum.Font.Arial
+SpeedBox.PlaceholderText = "..."
+SpeedBox.Text = ""
+SpeedBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+SpeedBox.TextSize = 14.000
+
+SpeedLabel.Name = "SpeedLabel"
+SpeedLabel.Parent = MainFrame
+SpeedLabel.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+SpeedLabel.BorderColor3 = Color3.fromRGB(255, 255, 255)
+SpeedLabel.Position = UDim2.new(0.135278523, 0, 0.496745586, 0)
+SpeedLabel.Size = UDim2.new(0, 97, 0, 31)
+SpeedLabel.Font = Enum.Font.Arial
+SpeedLabel.Text = "Speed"
+SpeedLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+SpeedLabel.TextSize = 20.000
+
+DefualtSpeedLabel.Name = "DefualtSpeedLabel"
+DefualtSpeedLabel.Parent = MainFrame
+DefualtSpeedLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DefualtSpeedLabel.BackgroundTransparency = 1.000
+DefualtSpeedLabel.Position = UDim2.new(0.62068969, 0, 0.527995586, 0)
+DefualtSpeedLabel.Size = UDim2.new(0, 90, 0, 21)
+DefualtSpeedLabel.Font = Enum.Font.Arial
+DefualtSpeedLabel.Text = "Defualt 16"
+DefualtSpeedLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+DefualtSpeedLabel.TextSize = 16.000
+
+JumpLabel.Name = "JumpLabel"
+JumpLabel.Parent = MainFrame
+JumpLabel.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+JumpLabel.BorderColor3 = Color3.fromRGB(255, 255, 255)
+JumpLabel.Position = UDim2.new(0.0848806351, 0, 0.723409772, 0)
+JumpLabel.Size = UDim2.new(0, 116, 0, 31)
+JumpLabel.Font = Enum.Font.Arial
+JumpLabel.Text = "Jump Power"
+JumpLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+JumpLabel.TextSize = 20.000
+
+DeafualtJumpLabel.Name = "DeafualtJumpLabel"
+DeafualtJumpLabel.Parent = MainFrame
+DeafualtJumpLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DeafualtJumpLabel.BackgroundTransparency = 1.000
+DeafualtJumpLabel.Position = UDim2.new(0.62068969, 0, 0.74874264, 0)
+DeafualtJumpLabel.Size = UDim2.new(0, 90, 0, 21)
+DeafualtJumpLabel.Font = Enum.Font.Arial
+DeafualtJumpLabel.Text = "Defualt 50"
+DeafualtJumpLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+DeafualtJumpLabel.TextSize = 16.000
+
+JumpBox.Name = "JumpBox"
+JumpBox.Parent = MainFrame
+JumpBox.BackgroundColor3 = Color3.fromRGB(41, 41, 41)
+JumpBox.BorderColor3 = Color3.fromRGB(255, 255, 255)
+JumpBox.Position = UDim2.new(0.419098139, 0, 0.723409772, 0)
+JumpBox.Size = UDim2.new(0, 64, 0, 31)
+JumpBox.Font = Enum.Font.Arial
+JumpBox.PlaceholderText = "..."
+JumpBox.Text = ""
+JumpBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+JumpBox.TextSize = 14.000
+
+local plr = game.Players.LocalPlayer
+
+function isPlayerLoaded()
+	if game.Workspace:FindFirstChild(plr.Name) then
+		if plr.Character:FindFirstChild("HumanoidRootPart") then
+			return true
+		end
+	end
+	return false
+end
+
+function updateSpeed()
+	if tonumber(SpeedBox.Text) ~= nil then
+		local newSpeed = tonumber(SpeedBox.Text)
+		local isLoaded = isPlayerLoaded()
+		if isLoaded then
+			if newSpeed ~= plr.Character.Humanoid.WalkSpeed then
+				plr.Character.Humanoid.WalkSpeed = newSpeed
+			end
+		end
+	end
+end
+
+function updateJump()
+	if tonumber(JumpBox.Text) ~= nil then
+		local newJump = tonumber(JumpBox.Text)
+		local isLoaded = isPlayerLoaded()
+		if isLoaded then
+			if newJump ~= plr.Character.Humanoid.JumpPower then
+				plr.Character.Humanoid.JumpPower = newJump
+			end
+		end
+	end
+end
+
+function updateStats()
+	updateSpeed()
+	updateJump()
+end
+while wait(0.0001) do
+	updateStats()
+end
+
+
+
