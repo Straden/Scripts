@@ -1,0 +1,109 @@
+plr = game.Players.LocalPlayer
+Players = game:GetService("Players")
+Mouse = game.Players.LocalPlayer:GetMouse()
+local function getShops()
+    possibleShoppers = {}
+    for i, child in ipairs(game.Workspace:GetChildren()) do 
+        if child:FindFirstChild("Humanoid") then
+    if not Players:FindFirstChild(child.Name) then 
+                table.insert(possibleShoppers, child)    
+            end
+        end
+    end
+    return possibleShoppers
+end
+
+local function getPaws()
+    possibleShoppers = getShops()
+    for i, v in ipairs(possibleShoppers) do 
+        if v:FindFirstChild("Brooding Black") then 
+            return v
+        end
+    end
+end
+local function WorldToScreen(pos)
+    local camera = workspace.CurrentCamera
+    local worldPoint = pos
+    local vector, inViewport = camera:WorldToViewportPoint(worldPoint)
+     
+    local viewportPoint = Vector2.new(vector.X, vector.Y)
+    local depth = vector.Z
+    return viewportPoint
+end
+
+local function vis(pos) 
+    local camera = workspace.CurrentCamera
+    local worldPoint = pos
+    local vector, inViewport = camera:WorldToViewportPoint(worldPoint)
+     
+    local viewportPoint = Vector2.new(vector.X, vector.Y)
+    local depth = vector.Z
+    return inViewport
+end
+
+local function newTracer(attachment,clr)
+    trace = Drawing.new("Line")
+    trace.Visible = false 
+    trace.Color = clr
+    trace.Thickness = 2
+    trace.To = WorldToScreen(attachment)
+    trace.From = Vector2.new(0,0)
+    return trace 
+end
+local function isPlayerLoaded(plr)
+    local playerLoaded = false
+    if game.Workspace:FindFirstChild(plr.Name) then
+        if plr.Character:FindFirstChild("HumanoidRootPart") then
+            playerLoaded = true
+        end
+    end
+    return playerLoaded
+end
+paws = getPaws()
+utilPos = Vector3.new(-1735,23,1301)
+moneyPos = Vector3.new(2059,23,2458)
+pawsTrace = newTracer(paws.Head.Position, Color3.fromRGB(255,0,0))
+utilTrace = newTracer(utilPos, Color3.fromRGB(255,255,0))
+moneyTrace = newTracer(moneyPos, Color3.fromRGB(0,255,0))
+
+local function utilOrMoney()
+    possibleShoppers = getShops()
+    for i, v in ipairs(possibleShoppers) do 
+        if v.Name == 'Model' and not v:FindFirstChild("Brooding Black") then 
+            if (utilPos - v.HumanoidRootPart.Position).magnitude < 50 then 
+                return 1 
+            else 
+                return 2
+            end
+        end
+    end
+end
+enabled = false 
+Mouse.KeyDown:connect(function(key)
+    if key == "k" or key == "K" then 
+        enabled = not enabled
+    end
+end)
+while wait(_G.updateSpeed) do
+    if vis(paws.Head.Position) and enabled then 
+        pawsTrace.Visible = true
+    else
+        pawsTrace.Visible = false
+    end
+    if vis(moneyPos) and utilOrMoney() == 2 and enabled then 
+        moneyTrace.Visible = true
+    else
+        moneyTrace.Visible = false
+    end
+    if vis(utilPos) and utilOrMoney() == 1 and enabled then 
+        utilTrace.Visible = true
+    else
+        utilTrace.Visible = false
+    end
+    pawsTrace.To = WorldToScreen(paws.Head.Position)
+    pawsTrace.From = WorldToScreen(plr.Character.HumanoidRootPart.Position)
+    utilTrace.To = WorldToScreen(utilPos)
+    utilTrace.From = WorldToScreen(plr.Character.HumanoidRootPart.Position)
+    moneyTrace.To = WorldToScreen(moneyPos)
+    moneyTrace.From = WorldToScreen(plr.Character.HumanoidRootPart.Position)
+end
