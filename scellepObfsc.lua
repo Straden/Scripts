@@ -336,7 +336,7 @@ function ScellepLibrary:CreateWindow(gameNameVar)
 		ExampleSlider.Position = UDim2.new(0, 0, 0.623376608, 0)
 		ExampleSlider.Size = UDim2.new(0, 79, 0, 29)
 		ExampleSlider.Font = Enum.Font.Nunito
-		ExampleSlider.Text = "Slider"
+		ExampleSlider.Text = labelTxt
 		ExampleSlider.TextColor3 = Color3.fromRGB(30, 106, 88)
 		ExampleSlider.TextSize = 20.000
 		ExampleSlider.TextXAlignment = Enum.TextXAlignment.Left
