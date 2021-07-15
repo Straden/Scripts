@@ -320,6 +320,7 @@ function ScellepLibrary:CreateWindow(gameNameVar)
 	end
 	function LibFunctions:newSlider(tabName, sectionName, labelTxt, max, min, roundAmount, func)
 		max=max-min
+		print(max)
 		local ExampleSlider = Instance.new("TextLabel")
 		local SliderBG = Instance.new("TextLabel")
 		local SliderBGCorner = Instance.new("UICorner")
@@ -416,7 +417,7 @@ function ScellepLibrary:CreateWindow(gameNameVar)
 						local size = localMouseX
 						local num = max * (size / maxSize)
 						num = round(num, roundAmount)
-						num = num + 50
+						num = num + min
 						SliderAmountLabel.Text = tostring(num)
 						func(num)
 					end
@@ -432,5 +433,5 @@ function ScellepLibrary:CreateWindow(gameNameVar)
 end)
 	return LibFunctions
 end
-
 return ScellepLibrary
+
