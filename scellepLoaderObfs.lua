@@ -116,4 +116,4 @@ function scellepLoader:Init()
 	end
 	return loaderFuncs
 end 
-e = scellepLoader:Init()
+return scellepLoader
