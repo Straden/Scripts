@@ -63,6 +63,12 @@ function scellepLib:Init(gn)
 	TabsListUI.Parent = Tabs
 	TabsListUI.SortOrder = Enum.SortOrder.LayoutOrder
 	TabsListUI.Padding = UDim.new(0, 5)
+	function onKeyPress(actionName, userInputState, inputObject)
+	    if userInputState == Enum.UserInputState.Begin then
+		MainFrame.Visible = not MainFrame.Visible
+	    end
+	end
+	game.ContextActionService:BindAction("keyPress", onKeyPress, false, Enum.KeyCode.RightShift)
 	local loaderFuncs = {}
 	function loaderFuncs:newTab(tn)
 		local TabContainer = Instance.new("ScrollingFrame")
