@@ -65,7 +65,7 @@ function scellepLoader:Init()
 	MainLabel.Size = UDim2.new(0, 115, 0, 49)
 	MainLabel.Font = Enum.Font.Kalam
 	MainLabel.Text = "Scellep"
-	MainLabel.TextColor3 = Color3.fromRGB(69, 252, 255)
+	MainLabel.TextColor3 = Color3.fromRGB(255, 171, 173)
 	MainLabel.TextSize = 60.000
 	MainLabel.TextWrapped = true
 	MainLabel.TextYAlignment = Enum.TextYAlignment.Top
