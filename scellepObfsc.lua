@@ -1,401 +1,405 @@
---Is this clean? no. do i care? no
-local function round(number, decimalPlaces)
-	return math.round(number * 10^decimalPlaces) * 10^-decimalPlaces
-end
-local ScellepLibrary = {}
-function ScellepLibrary:CreateWindow(gameNameVar)
-	local ScellepUi = Instance.new("ScreenGui")
+local scellepLib = {}
+function scellepLib:Init(gn)
+	local UserInputService = game:GetService("UserInputService")
+	local ScellepHub = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
-	local GameName = Instance.new("TextLabel")
-	local Tabs = Instance.new("Frame")
 	local Containers = Instance.new("Frame")
-	local TabGrid = Instance.new("UIGridLayout")
-	local tabs = 0 
-	ScellepUi.Name = "ScellepUi"
-	ScellepUi.Parent = game.CoreGui
+	local GameName = Instance.new("TextLabel")
+	local Divider = Instance.new("TextLabel")
+	local Tabs = Instance.new("Frame")
+	local TabsListUI = Instance.new("UIListLayout")
+	local tabs = 0
+	ScellepHub.Name = "ScellepHub"
+	ScellepHub.Parent = game.CoreGui
 	MainFrame.Name = "MainFrame"
-	MainFrame.Parent = ScellepUi
-	MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	MainFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+	MainFrame.Parent = ScellepHub
+	MainFrame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+	MainFrame.BorderColor3 = Color3.fromRGB(31, 31, 31)
 	MainFrame.BorderSizePixel = 5
-	MainFrame.Position = UDim2.new(0.0921397358, 0, 0.0671217293, 0)
-	MainFrame.Size = UDim2.new(0, 706, 0, 656)
+	MainFrame.Position = UDim2.new(0.404147118, 0, 0.219707042, 0)
+	MainFrame.Size = UDim2.new(0, 343, 0, 420)
 	MainFrame.Active = true
 	MainFrame.Draggable = true
-	GameName.Name = "GameName"
-	GameName.Parent = MainFrame
-	GameName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	GameName.BackgroundTransparency = 1.000
-	GameName.Size = UDim2.new(0, 154, 0, 28)
-	GameName.Font = Enum.Font.SourceSans
-	GameName.Text = gameNameVar
-	GameName.TextColor3 = Color3.fromRGB(33, 106, 88)
-	GameName.TextSize = 30.000
-	GameName.TextXAlignment = Enum.TextXAlignment.Left
-	Tabs.Name = "Tabs"
-	Tabs.Parent = MainFrame
-	Tabs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Tabs.BackgroundTransparency = 1.000
-	Tabs.Position = UDim2.new(0.242519692, 0, 0, 0)
-	Tabs.Size = UDim2.new(0, 480, 0, 28)
-	TabGrid.Name = "TabGrid"
-	TabGrid.Parent = Tabs
-	TabGrid.SortOrder = Enum.SortOrder.LayoutOrder
-	TabGrid.CellSize = UDim2.new(0, 88, 0, 26)
 	Containers.Name = "Containers"
 	Containers.Parent = MainFrame
-	Containers.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Containers.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
 	Containers.BackgroundTransparency = 1.000
-	Containers.Position = UDim2.new(0, 0, 0.0426829271, 0)
-	Containers.Size = UDim2.new(1, 0, 0.957317054, 0)
-	local LibFunctions = {}
-
-	function LibFunctions:CreateTab(tabName)
-	    tabs=tabs + 1
-		local MainTab = Instance.new("TextButton")
-		local SelectedTabLabel = Instance.new("TextLabel")
-		local TabContainer = Instance.new("Frame")
-		MainTab.Name = "Main"..tabName
-		MainTab.Parent = Tabs
-		MainTab.BackgroundColor3 = Color3.fromRGB(129, 245, 191)
-		MainTab.BackgroundTransparency = 1.000
-		MainTab.BorderSizePixel = 0
-		MainTab.Position = UDim2.new(-0.128289476, 0, 0, 0)
-		MainTab.Size = UDim2.new(0, 88, 0, 26)
-		MainTab.Font = Enum.Font.Nunito
-		MainTab.Text = tabName
-		MainTab.TextColor3 = Color3.fromRGB(33, 106, 88)
-		MainTab.TextSize = 20.000
-		SelectedTabLabel.Name = "SelectedTabLabel"
-		SelectedTabLabel.Parent = MainTab
-		SelectedTabLabel.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
-		SelectedTabLabel.BorderSizePixel = 0
-		SelectedTabLabel.Position = UDim2.new(0, 0, 1, 0)
-		if tabs > 1 then
-    		SelectedTabLabel.Size = UDim2.new(0, 0, 0, 2)
-		else
-		    SelectedTabLabel.Size = UDim2.new(1, 0, 0, 2)
-		end
-		SelectedTabLabel.Font = Enum.Font.SourceSans
-		SelectedTabLabel.Text = ""
-		SelectedTabLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-		SelectedTabLabel.TextSize = 14.000
-		TabContainer.Name = tabName.."Container"
+	Containers.BorderColor3 = Color3.fromRGB(31, 31, 31)
+	Containers.BorderSizePixel = 5
+	Containers.Position = UDim2.new(-0.00239091436, 0, 0.0857142881, 0)
+	Containers.Size = UDim2.new(0, 235, 0, 383)
+	GameName.Name = "GameName"
+	GameName.Parent = MainFrame
+	GameName.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+	GameName.BackgroundTransparency = 1.000
+	GameName.Position = UDim2.new(0, 0, -0.000370933907, 0)
+	GameName.Size = UDim2.new(0, 218, 0, 28)
+	GameName.Font = Enum.Font.Nunito
+	GameName.Text = gn
+	GameName.TextColor3 = Color3.fromRGB(255, 255, 255)
+	GameName.TextSize = 20.000
+	GameName.TextXAlignment = Enum.TextXAlignment.Left
+	GameName.TextYAlignment = Enum.TextYAlignment.Top
+	Divider.Name = "Divider"
+	Divider.Parent = MainFrame
+	Divider.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+	Divider.BorderColor3 = Color3.fromRGB(255, 171, 173)
+	Divider.BorderSizePixel = 0
+	Divider.Position = UDim2.new(0.681999981, -10, 0, -5)
+	Divider.Size = UDim2.new(0, 2, 1, 10)
+	Divider.Font = Enum.Font.SourceSans
+	Divider.Text = ""
+	Divider.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Divider.TextSize = 14.000
+	Tabs.Name = "Tabs"
+	Tabs.Parent = MainFrame
+	Tabs.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+	Tabs.BackgroundTransparency = 1.000
+	Tabs.BorderColor3 = Color3.fromRGB(31, 31, 31)
+	Tabs.BorderSizePixel = 5
+	Tabs.Position = UDim2.new(0.682740271, 0, -0.000370933907, 0)
+	Tabs.Size = UDim2.new(0, 108, 0, 420)
+	TabsListUI.Name = "TabsListUI"
+	TabsListUI.Parent = Tabs
+	TabsListUI.SortOrder = Enum.SortOrder.LayoutOrder
+	TabsListUI.Padding = UDim.new(0, 5)
+	local loaderFuncs = {}
+	function loaderFuncs:newTab(tn)
+		local TabContainer = Instance.new("ScrollingFrame")
+		local ContainerListUi = Instance.new("UIListLayout")
+		local TabBtn = Instance.new("TextButton")
+		local TabCorner = Instance.new("UICorner")
+		TabContainer.Name = tn.."Container"
 		TabContainer.Parent = Containers
+		TabContainer.Active = true
 		TabContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		TabContainer.BackgroundTransparency = 1.000
-		TabContainer.Size = UDim2.new(1, 0, 1, 0)
-		if tabs > 1 then
-    		TabContainer.Visible = false
-		end
-		local function SelectAnim(obj)
-			local willTween = obj:TweenSize(
-				UDim2.new(1, 0, 0, 2),  
-				Enum.EasingDirection.In,    
-				Enum.EasingStyle.Sine,      
-				0.2,                         
-				true  
-			)
-		end
-		local function DeSelectAnim(obj)
-			local willTween = obj:TweenSize(
-				UDim2.new(0, 0, 0, 2),  
-				Enum.EasingDirection.In,    
-				Enum.EasingStyle.Sine,      
-				0.2,                         
-				true  
-			)
-		end
-		MainTab.MouseButton1Down:connect(function()
-			for i, v in ipairs(MainTab.Parent:GetChildren()) do 
-				if v.Name ~= "TabGrid" then 
-					local Rname = v.Name:sub(5, #v.Name)
-					local realTab = Containers:FindFirstChild(Rname.."Container")
-					if realTab then realTab.Visible = false end
-					if v:FindFirstChild("SelectedTabLabel").AbsoluteSize.X > 0 then 
-						DeSelectAnim(v:FindFirstChild("SelectedTabLabel"))
-					end
-				end
+		TabContainer.BorderSizePixel = 0
+		TabContainer.Position = UDim2.new(0, 0, 0.00260416674, 0)
+		TabContainer.Size = UDim2.new(0, 227, 0, 384)
+		TabContainer.CanvasSize = UDim2.new(0, 0, 0, 0)
+		TabContainer.ScrollBarImageTransparency = 1
+		tabs = tabs + 1 
+		if tabs > 1 then TabContainer.Visible = false end
+		ContainerListUi.Name = "ContainerListUi"
+		ContainerListUi.Parent = TabContainer
+		ContainerListUi.SortOrder = Enum.SortOrder.LayoutOrder
+		ContainerListUi.Padding = UDim.new(0, 5)
+		TabBtn.Name = tn.."Main"
+		TabBtn.Parent = Tabs
+		TabBtn.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+		TabBtn.Size = UDim2.new(0, 108, 0, 28)
+		TabBtn.Font = Enum.Font.Nunito
+		TabBtn.Text = tn
+		TabBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TabBtn.TextSize = 20.000
+		TabBtn.AutoButtonColor = false
+		TabCorner.Name = "TabCorner"
+		TabCorner.Parent = TabBtn
+		TabBtn.MouseButton1Down:connect(function()
+			for i, v in ipairs(Containers:GetChildren()) do 
+				if v ~= TabContainer then v.Visible = false end
 			end
-			if MainTab:FindFirstChild("SelectedTabLabel").AbsoluteSize.X == 0 then 
-				SelectAnim(MainTab:FindFirstChild("SelectedTabLabel"))
-			end
-			local realTab = Containers:FindFirstChild(tabName.."Container")
-			if realTab then realTab.Visible = true end
+			TabContainer.Visible = true
 		end)
+		return TabContainer
 	end
-	function LibFunctions:newSection(tabName, sectionName)
-		local TabTestSection = Instance.new("TextLabel")
-		local SectionCorner = Instance.new("UICorner")
-		local MainSection = Instance.new("TextLabel")
-		local MainSectionCorner = Instance.new("UICorner")
-		local SectionName = Instance.new("TextLabel")
-		local MainSectionList = Instance.new("UIListLayout")
-		TabTestSection.Name = tabName..sectionName
-		local count = 0 
-		for i, v in ipairs(Containers:FindFirstChild(tabName.."Container"):GetChildren()) do 
-		    count = count + 1    
-		end
-		local xPos = count * 240
-		local yPlus = 0 
-		while xPos >= 720 do
-		    xPos = xPos - 720 
-		    print(xPos)
-             yPlus = yPlus + 1 
-		end
-		local children = Containers:FindFirstChild(tabName.."Container"):GetChildren()
-		TabTestSection.Parent = Containers:FindFirstChild(tabName.."Container")
-		TabTestSection.BackgroundColor3 = Color3.fromRGB(202, 231, 241)
-		TabTestSection.BorderSizePixel = 0
-		TabTestSection.Position = UDim2.new(0, xPos, 0.0175159238, 180 * yPlus)
-		TabTestSection.Size = UDim2.new(0, 225, 0, 26)
-		TabTestSection.Font = Enum.Font.SourceSans
-		TabTestSection.Text = ""
-		TabTestSection.TextColor3 = Color3.fromRGB(0, 0, 0)
-		TabTestSection.TextSize = 14.000
-		SectionCorner.Name = "SectionCorner"
-		SectionCorner.Parent = TabTestSection
-		MainSection.Name = "MainSection"
-		MainSection.Parent = TabTestSection
-		MainSection.BackgroundColor3 = Color3.fromRGB(202, 231, 241)
-		MainSection.BackgroundTransparency = 1.000
-		MainSection.BorderSizePixel = 0
-		MainSection.Position = UDim2.new(0, 5, 0, 1)
-		MainSection.Size = UDim2.new(1, -5, 1, -5)
-		MainSection.Font = Enum.Font.SourceSans
-		MainSection.Text = ""
-		MainSection.TextColor3 = Color3.fromRGB(0, 0, 0)
-		MainSection.TextSize = 14.000
-		MainSectionCorner.Name = "MainSectionCorner"
-		MainSectionCorner.Parent = MainSection
-		SectionName.Name = "SectionName"
-		SectionName.Parent = MainSection
-		SectionName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		SectionName.BackgroundTransparency = 1.000
-		SectionName.Position = UDim2.new(0.0310000274, 5, 0, 0)
-		SectionName.Size = UDim2.new(0, 213, 0, 23)
-		SectionName.Font = Enum.Font.Nunito
-		SectionName.Text = sectionName
-		SectionName.TextColor3 = Color3.fromRGB(33, 106, 88)
-		SectionName.TextSize = 20.000
-		SectionName.TextXAlignment = Enum.TextXAlignment.Left
-		MainSectionList.Name = "MainSectionList"
-		MainSectionList.Parent = MainSection
-		MainSectionList.SortOrder = Enum.SortOrder.LayoutOrder
-		MainSectionList.Padding = UDim.new(0, 5)
+	function loaderFuncs:newLabel(tab, labelTxt)
+		local ExampleLabel = Instance.new("TextLabel")
+		local LabelCorner = Instance.new("UICorner")
+		ExampleLabel.Name = "ExampleLabel"
+		ExampleLabel.Parent = tab
+		ExampleLabel.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+		ExampleLabel.BackgroundTransparency = 1.000
+		ExampleLabel.Size = UDim2.new(0, 218, 0, 22)
+		ExampleLabel.Font = Enum.Font.Nunito
+		ExampleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+		ExampleLabel.TextSize = 20.000
+		ExampleLabel.Text = labelTxt
+		LabelCorner.Name = "LabelCorner"
+		LabelCorner.Parent = ExampleLabel
+		tab.CanvasSize = UDim2.new(0, 0, 0, tab.ContainerListUi.AbsoluteContentSize.Y)
 	end
-	function LibFunctions:newButton(tabName, sectionName, buttonTxt, buttonFunc)
+	function loaderFuncs:newButton(tab, labelTxt,func)
 		local ExampleButton = Instance.new("TextButton")
 		local ButtonCorner = Instance.new("UICorner")
 		ExampleButton.Name = "ExampleButton"
-		ExampleButton.Parent = Containers:FindFirstChild(tabName.."Container"):FindFirstChild(tabName..sectionName).MainSection
-		ExampleButton.BackgroundColor3 = Color3.fromRGB(205, 234, 255)
-		ExampleButton.Size = UDim2.new(0, 213, 0, 29)
+		ExampleButton.Parent = tab
+		ExampleButton.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+		ExampleButton.Size = UDim2.new(0, 218, 0, 22)
 		ExampleButton.AutoButtonColor = false
 		ExampleButton.Font = Enum.Font.Nunito
-		ExampleButton.Text = buttonTxt
-		ExampleButton.TextColor3 = Color3.fromRGB(30, 106, 88)
+		ExampleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 		ExampleButton.TextSize = 20.000
+		ExampleButton.Text = labelTxt
+		ExampleButton.MouseButton1Down:connect(function()pcall(func) end)
 		ButtonCorner.Name = "ButtonCorner"
 		ButtonCorner.Parent = ExampleButton
-		local count = 0 
-		for i,v in ipairs(ExampleButton.Parent:GetChildren()) do
-			count = count + 1 
-		end
-		count = count - 3
-		ExampleButton.Parent.Parent.Size = UDim2.new(0,225,0,26 + (35.25 * count) + 5)
-		ExampleButton.MouseButton1Click:Connect(function()
-			pcall(buttonFunc)
+		tab.CanvasSize = UDim2.new(0, 0, 0, tab.ContainerListUi.AbsoluteContentSize.Y)
+	end
+	function loaderFuncs:newTextbox(tab, labelTxt, placeHolder, func)
+		local ExampleTextbox = Instance.new("TextLabel")
+		local TextboxLabelCorner = Instance.new("UICorner")
+		local MainTextbox = Instance.new("TextBox")
+		ExampleTextbox.Name = "ExampleTextbox"
+		ExampleTextbox.Parent = tab
+		ExampleTextbox.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+		ExampleTextbox.BackgroundTransparency = 1.000
+		ExampleTextbox.Position = UDim2.new(0, 0, 0.140625, 0)
+		ExampleTextbox.Size = UDim2.new(0, 76, 0, 22)
+		ExampleTextbox.Font = Enum.Font.Nunito
+		ExampleTextbox.Text = labelTxt
+		ExampleTextbox.TextColor3 = Color3.fromRGB(255, 255, 255)
+		ExampleTextbox.TextSize = 20.000
+		ExampleTextbox.TextXAlignment = Enum.TextXAlignment.Left
+		TextboxLabelCorner.Name = "TextboxLabelCorner"
+		TextboxLabelCorner.Parent = ExampleTextbox
+		MainTextbox.Name = "MainTextbox"
+		MainTextbox.Parent = ExampleTextbox
+		MainTextbox.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+		MainTextbox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		MainTextbox.Position = UDim2.new(1.43246543, 0, 0, 0)
+		MainTextbox.Size = UDim2.new(0, 100, 0, 22)
+		MainTextbox.Font = Enum.Font.SourceSans
+		MainTextbox.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+		MainTextbox.PlaceholderText = placeHolder
+		MainTextbox.Text = ""
+		MainTextbox.TextColor3 = Color3.fromRGB(0, 0, 0)
+		MainTextbox.TextSize = 14.000
+		MainTextbox.Changed:connect(function()
+			pcall(func(MainTextbox.Text))
 		end)
 	end
-	function LibFunctions:newTextBox(tabName, sectionName, labelTxt, func)
-		local ExampleTextBox = Instance.new("TextLabel")
-		local MainTextBox = Instance.new("TextBox")
-		ExampleTextBox.Name = "ExampleTextBox"
-		ExampleTextBox.Parent = Containers:FindFirstChild(tabName.."Container"):FindFirstChild(tabName..sectionName).MainSection
-		ExampleTextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ExampleTextBox.BackgroundTransparency = 1.000
-		ExampleTextBox.Position = UDim2.new(0, 0, 0.337662339, 0)
-		ExampleTextBox.Size = UDim2.new(0, 128, 0, 29)
-		ExampleTextBox.Font = Enum.Font.Nunito
-		ExampleTextBox.Text = labelTxt
-		ExampleTextBox.TextColor3 = Color3.fromRGB(30, 106, 88)
-		ExampleTextBox.TextSize = 20.000
-		ExampleTextBox.TextXAlignment = Enum.TextXAlignment.Left
-		MainTextBox.Name = "MainTextBox"
-		MainTextBox.Parent = ExampleTextBox
-		MainTextBox.BackgroundColor3 = Color3.fromRGB(233, 249, 255)
-		MainTextBox.BorderSizePixel = 0
-		MainTextBox.Position = UDim2.new(1, 0, 0, 0)
-		MainTextBox.Size = UDim2.new(0, 85, 0, 29)
-		MainTextBox.Font = Enum.Font.Nunito
-		MainTextBox.PlaceholderText = "Type Here"
-		MainTextBox.Text = ""
-		MainTextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
-		MainTextBox.TextSize = 14.000
-		MainTextBox.TextWrapped = true
-		local count = 0 
-		for i,v in ipairs(ExampleTextBox.Parent:GetChildren()) do
-			count = count + 1 
-		end
-		count = count - 3
-		ExampleTextBox.Parent.Parent.Size = UDim2.new(0,225,0,26 + (35.25 * count) + 5)
-		MainTextBox.Changed:connect(function()
-			pcall(func(MainTextBox.Text))
-		end)
-	end
-	function LibFunctions:newToggle(tabName, sectionName, labelTxt, onFunc, offFunc)
-		local ExampleToggle = Instance.new("TextLabel")
-		local ToggleBG = Instance.new("ImageLabel")
+	function loaderFuncs:newToggle(tab, labelTxt, onFunc, offFunc)
+		local ToggleExample = Instance.new("TextLabel")
+		local ToggleLabelCorner = Instance.new("UICorner")
+		local ToggleBG = Instance.new("TextLabel")
+		local ToggleBGCorner = Instance.new("UICorner")
 		local MainToggle = Instance.new("ImageLabel")
 		local ToggleDetector = Instance.new("TextButton")
-		local TweenService = game:GetService("TweenService")
-		ExampleToggle.Name = "ExampleToggle"
-		ExampleToggle.Parent = Containers:FindFirstChild(tabName.."Container"):FindFirstChild(tabName..sectionName).MainSection
-		ExampleToggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ExampleToggle.BackgroundTransparency = 1.000
-		ExampleToggle.Position = UDim2.new(0, 0, 0.337662339, 0)
-		ExampleToggle.Size = UDim2.new(0, 128, 0, 29)
-		ExampleToggle.Font = Enum.Font.Nunito
-		ExampleToggle.Text = " "..labelTxt
-		ExampleToggle.TextColor3 = Color3.fromRGB(30, 106, 88)
-		ExampleToggle.TextSize = 20.000
-		ExampleToggle.TextXAlignment = Enum.TextXAlignment.Left
+		ToggleExample.Name = "ToggleExample"
+		ToggleExample.Parent = tab
+		ToggleExample.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+		ToggleExample.BackgroundTransparency = 1.000
+		ToggleExample.Position = UDim2.new(0, 0, 0.140625, 0)
+		ToggleExample.Size = UDim2.new(0, 76, 0, 22)
+		ToggleExample.Font = Enum.Font.Nunito
+		ToggleExample.Text = labelTxt
+		ToggleExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		ToggleExample.TextSize = 20.000
+		ToggleExample.TextXAlignment = Enum.TextXAlignment.Left
+		ToggleLabelCorner.Name = "ToggleLabelCorner"
+		ToggleLabelCorner.Parent = ToggleExample
 		ToggleBG.Name = "ToggleBG"
-		ToggleBG.Parent = ExampleToggle
-		ToggleBG.AnchorPoint = Vector2.new(0.5, 0.5)
-		ToggleBG.BackgroundColor3 = Color3.fromRGB(233, 249, 255)
-		ToggleBG.BackgroundTransparency = 1.000
-		ToggleBG.Position = UDim2.new(1.33203125, 0, 0.5, 0)
-		ToggleBG.Size = UDim2.new(0.6640625, 0, 1, 0)
-		ToggleBG.Image = "rbxassetid://3570695787"
-		ToggleBG.ImageColor3 = Color3.fromRGB(233, 249, 255)
-		ToggleBG.ScaleType = Enum.ScaleType.Slice
-		ToggleBG.SliceCenter = Rect.new(100, 100, 100, 100)
-		ToggleBG.SliceScale = 0.120
+		ToggleBG.Parent = ToggleExample
+		ToggleBG.BackgroundColor3 = Color3.fromRGB(66, 66, 66)
+		ToggleBG.Position = UDim2.new(0.998254895, 0, 0, 0)
+		ToggleBG.Size = UDim2.new(0, 66, 0, 22)
+		ToggleBG.Font = Enum.Font.Nunito
+		ToggleBG.Text = ""
+		ToggleBG.TextColor3 = Color3.fromRGB(255, 255, 255)
+		ToggleBG.TextSize = 20.000
+		ToggleBGCorner.Name = "ToggleBGCorner"
+		ToggleBGCorner.Parent = ToggleBG
 		MainToggle.Name = "MainToggle"
-		MainToggle.Parent = ExampleToggle
+		MainToggle.Parent = ToggleBG
 		MainToggle.AnchorPoint = Vector2.new(0.5, 0.5)
-		MainToggle.BackgroundColor3 = Color3.fromRGB(233, 249, 255)
+		MainToggle.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
 		MainToggle.BackgroundTransparency = 1.000
-		MainToggle.Position = UDim2.new(1.1640625, 0, 0.5, 0)
-		MainToggle.Size = UDim2.new(0.328125, 0, 1, 0)
+		MainToggle.Position = UDim2.new(0.25, 0, 0.5, 0)
+		MainToggle.Size = UDim2.new(0.5, 0, 1, 0)
 		MainToggle.Image = "rbxassetid://3570695787"
-		MainToggle.ImageColor3 = Color3.fromRGB(176, 211, 255)
+		MainToggle.ImageColor3 = Color3.fromRGB(255, 171, 173)
 		MainToggle.ScaleType = Enum.ScaleType.Slice
 		MainToggle.SliceCenter = Rect.new(100, 100, 100, 100)
 		MainToggle.SliceScale = 0.120
 		ToggleDetector.Name = "ToggleDetector"
-		ToggleDetector.Parent = ExampleToggle
+		ToggleDetector.Parent = ToggleExample
 		ToggleDetector.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		ToggleDetector.BackgroundTransparency = 1.000
 		ToggleDetector.Position = UDim2.new(1, 0, 0, 0)
-		ToggleDetector.Size = UDim2.new(0, 84, 0, 29)
+		ToggleDetector.Size = UDim2.new(0, 72, 0, 22)
 		ToggleDetector.Font = Enum.Font.SourceSans
 		ToggleDetector.Text = ""
 		ToggleDetector.TextColor3 = Color3.fromRGB(0, 0, 0)
 		ToggleDetector.TextSize = 14.000
-		local isEnabled = false
-		local count = 0 
-		for i,v in ipairs(ExampleToggle.Parent:GetChildren()) do
-			count = count + 1 
-		end
-		count = count - 3
-		ExampleToggle.Parent.Parent.Size = UDim2.new(0,225,0,26 + (35.25 * count) + 5)
-
+		local toggled = false
 		ToggleDetector.MouseButton1Down:connect(function()
-			isEnabled = not isEnabled
-			if isEnabled then
-				local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
-				local tween = TweenService:Create(MainToggle, tweenInfo, {Position=UDim2.new(1.5, 0,0.5, 0)})
-				tween:Play()
+			if not toggled then
+				local willTween = MainToggle:TweenPosition(
+					UDim2.new(0.75,0,0.5,0),
+					Enum.EasingDirection.In,  
+					Enum.EasingStyle.Sine,     
+					0.1,                          
+					true,                       
+					nil                                         
+				)
 				pcall(onFunc)
-			else
-				local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
-				local tween = TweenService:Create(MainToggle, tweenInfo, {Position=UDim2.new(1.1640625, 0, 0.5, 0)})
-				tween:Play()
+				toggled = not toggled
+			else 
+				toggled = not toggled
+				local willTween = MainToggle:TweenPosition(
+					UDim2.new(0.25,0,0.5,0),
+					Enum.EasingDirection.In,  
+					Enum.EasingStyle.Sine,     
+					0.1,                          
+					true,                       
+					nil                                         
+				)
 				pcall(offFunc)
 			end
 		end)
 	end
-	function LibFunctions:newSlider(tabName, sectionName, labelTxt, max, min, roundAmount, func)
-		max=max-min
-		print(max)
-		local ExampleSlider = Instance.new("TextLabel")
+	function loaderFuncs:newDropdown(tab, labelTxt, options, func)
+		local dropped = false
+		local ExampleDropdown = Instance.new("TextButton")
+		local DropdownCorner = Instance.new("UICorner")
+		local DropdownBG = Instance.new("TextLabel")
+		local DropdownBGCorner = Instance.new("UICorner")
+		local DropdownListUI = Instance.new("UIListLayout")
+		local DropdownSelected = Instance.new("TextLabel")
+		ExampleDropdown.Name = "ExampleDropdown"
+		ExampleDropdown.Parent = tab
+		ExampleDropdown.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+		ExampleDropdown.Position = UDim2.new(0, 0, 0.28125, 0)
+		ExampleDropdown.Size = UDim2.new(0, 141, 0, 22)
+		ExampleDropdown.AutoButtonColor = false
+		ExampleDropdown.Font = Enum.Font.Nunito
+		ExampleDropdown.Text = labelTxt
+		ExampleDropdown.TextColor3 = Color3.fromRGB(0, 0, 0)
+		ExampleDropdown.TextSize = 20.000
+		DropdownCorner.Name = "DropdownCorner"
+		DropdownCorner.Parent = ExampleDropdown
+		DropdownBG.Name = "DropdownBG"
+		DropdownBG.Parent = ExampleDropdown
+		DropdownBG.BackgroundColor3 = Color3.fromRGB(66, 66, 66)
+		DropdownBG.Position = UDim2.new(-0.00174491853, 0, 1.29332376, 0)
+		DropdownBG.Size = UDim2.new(0, 208, 0, 22)
+		DropdownBG.Visible = false
+		DropdownBG.Font = Enum.Font.Nunito
+		DropdownBG.Text = ""
+		DropdownBG.TextColor3 = Color3.fromRGB(255, 255, 255)
+		DropdownBG.TextSize = 20.000
+		DropdownBGCorner.Name = "DropdownBGCorner"
+		DropdownBGCorner.Parent = DropdownBG
+		DropdownBG.ZIndex = 900
+		DropdownListUI.Name = "DropdownListUI"
+		DropdownListUI.Parent = DropdownBG
+		DropdownListUI.SortOrder = Enum.SortOrder.LayoutOrder
+		DropdownListUI.Padding = UDim.new(0, 5)
+		DropdownSelected.Name = "DropdownSelected"
+		DropdownSelected.Parent = ExampleDropdown
+		DropdownSelected.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+		DropdownSelected.BackgroundTransparency = 1.000
+		DropdownSelected.Position = UDim2.new(1.04727054, 0, 0.4, 0)
+		DropdownSelected.Size = UDim2.new(0, 66, 0, 0)
+		DropdownSelected.Font = Enum.Font.Nunito
+		DropdownSelected.Text = options[1]
+		DropdownSelected.TextColor3 = Color3.fromRGB(255, 255, 255)
+		DropdownSelected.TextSize = 20.000
+		DropdownSelected.TextXAlignment = Enum.TextXAlignment.Left
+		for i, v in ipairs(options) do 
+			local ExampleOption = Instance.new("TextButton")
+			local OptionCorner = Instance.new("UICorner")
+			ExampleOption.Name = "ExampleOption"
+			ExampleOption.Parent = DropdownBG
+			ExampleOption.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+			ExampleOption.Size = UDim2.new(0, 208, 0, 22)
+			ExampleOption.AutoButtonColor = false
+			ExampleOption.Font = Enum.Font.Nunito
+			ExampleOption.Text = v
+			ExampleOption.TextColor3 = Color3.fromRGB(0, 0, 0)
+			ExampleOption.TextSize = 20.000
+			ExampleOption.ZIndex = 900 + i
+			OptionCorner.Name = "OptionCorner"
+			OptionCorner.Parent = ExampleOption
+			ExampleOption.MouseButton1Down:connect(function()
+				DropdownSelected.Text = v
+				pcall(func(v))
+			end)
+		end
+		DropdownBG.Size = UDim2.new(0, 208, 0, DropdownListUI.AbsoluteContentSize.Y)
+		ExampleDropdown.MouseButton1Down:connect(function()
+			dropped = not dropped
+			DropdownBG.Visible = dropped
+		end)
+	end
+	function loaderFuncs:newSlider(tab, labelTxt, minNum, maxNum, roundAmount, func)
+		local function round(number, decimalPlaces)
+			return math.round(number * 10^decimalPlaces) * 10^-decimalPlaces
+		end
+		maxNum = maxNum- minNum
+		local SliderExample = Instance.new("TextLabel")
+		local SliderLabelCorner = Instance.new("UICorner")
 		local SliderBG = Instance.new("TextLabel")
 		local SliderBGCorner = Instance.new("UICorner")
-		local SliderAmountLabel = Instance.new("TextLabel")
-		local MainSlider = Instance.new("TextLabel")
+		local Slider = Instance.new("TextLabel")
 		local SliderCorner = Instance.new("UICorner")
-		local SliderDector = Instance.new("TextButton")
-		local UserInputService = game:GetService("UserInputService")
-		ExampleSlider.Name = "ExampleSlider"
-		ExampleSlider.Parent = Containers:FindFirstChild(tabName.."Container"):FindFirstChild(tabName..sectionName).MainSection
-		ExampleSlider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ExampleSlider.BackgroundTransparency = 1.000
-		ExampleSlider.Position = UDim2.new(0, 0, 0.623376608, 0)
-		ExampleSlider.Size = UDim2.new(0, 79, 0, 29)
-		ExampleSlider.Font = Enum.Font.Nunito
-		ExampleSlider.Text = labelTxt
-		ExampleSlider.TextColor3 = Color3.fromRGB(30, 106, 88)
-		ExampleSlider.TextSize = 20.000
-		ExampleSlider.TextXAlignment = Enum.TextXAlignment.Left
+		local SliderShower = Instance.new("TextLabel")
+		local SliderClickDetector = Instance.new("TextButton")
+		local SliderShowerCorner = Instance.new("UICorner")
+		SliderExample.Name = "SliderExample"
+		SliderExample.Parent = tab
+		SliderExample.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+		SliderExample.BackgroundTransparency = 1.000
+		SliderExample.Position = UDim2.new(0, 0, 0.140625, 0)
+		SliderExample.Size = UDim2.new(0, 76, 0, 22)
+		SliderExample.Font = Enum.Font.Nunito
+		SliderExample.Text = labelTxt
+		SliderExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		SliderExample.TextSize = 20.000
+		SliderExample.TextXAlignment = Enum.TextXAlignment.Left
+		SliderLabelCorner.Name = "SliderLabelCorner"
+		SliderLabelCorner.Parent = SliderExample
 		SliderBG.Name = "SliderBG"
-		SliderBG.Parent = ExampleSlider
-		SliderBG.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		SliderBG.BorderSizePixel = 0
-		SliderBG.Position = UDim2.new(1.06329107, 0, 0.413793117, 0)
-		SliderBG.Size = UDim2.new(0, 128, 0, 5)
-		SliderBG.Font = Enum.Font.SourceSans
+		SliderBG.Parent = SliderExample
+		SliderBG.BackgroundColor3 = Color3.fromRGB(66, 66, 66)
+		SliderBG.Position = UDim2.new(0.998255253, 0, 0.202414766, 0)
+		SliderBG.Size = UDim2.new(0, 142, 0, 12)
+		SliderBG.Font = Enum.Font.Nunito
 		SliderBG.Text = ""
-		SliderBG.TextColor3 = Color3.fromRGB(0, 0, 0)
-		SliderBG.TextSize = 14.000
+		SliderBG.TextColor3 = Color3.fromRGB(255, 255, 255)
+		SliderBG.TextSize = 20.000
 		SliderBGCorner.Name = "SliderBGCorner"
 		SliderBGCorner.Parent = SliderBG
-		SliderAmountLabel.Name = "SliderAmountLabel"
-		SliderAmountLabel.Parent = ExampleSlider
-		SliderAmountLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		SliderAmountLabel.BackgroundTransparency = 1.000
-		SliderAmountLabel.Position = UDim2.new(0, 0, -0.172413796, 0)
-		SliderAmountLabel.Size = UDim2.new(0, 212, 0, 17)
-		SliderAmountLabel.Font = Enum.Font.SourceSans
-		SliderAmountLabel.Text = tostring(min)
-		SliderAmountLabel.TextColor3 = Color3.fromRGB(30, 106, 88)
-		SliderAmountLabel.TextSize = 20.000
-		SliderAmountLabel.TextXAlignment = Enum.TextXAlignment.Right
-		MainSlider.Name = "MainSlider"
-		MainSlider.Parent = ExampleSlider
-		MainSlider.BackgroundColor3 = Color3.fromRGB(176, 211, 255)
-		MainSlider.BorderSizePixel = 0
-		MainSlider.Position = UDim2.new(1.06329107, 0, 0.413793117, 0)
-		MainSlider.Size = UDim2.new(0, 0, 0, 5)
-		MainSlider.Font = Enum.Font.SourceSans
-		MainSlider.Text = ""
-		MainSlider.TextColor3 = Color3.fromRGB(0, 0, 0)
-		MainSlider.TextSize = 14.000
+		SliderClickDetector.Name = "SliderClickDetector"
+		SliderClickDetector.Parent = SliderExample
+		SliderClickDetector.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		SliderClickDetector.BackgroundTransparency = 1.000
+		SliderClickDetector.Position = UDim2.new(1, 0, 0, 0)
+		SliderClickDetector.Size = UDim2.new(0, 141, 0, 22)
+		SliderClickDetector.Font = Enum.Font.SourceSans
+		SliderClickDetector.Text = ""
+		SliderClickDetector.TextColor3 = Color3.fromRGB(0, 0, 0)
+		SliderClickDetector.TextSize = 14.000
+		Slider.Name = "Slider"
+		Slider.Parent = SliderBG
+		Slider.BackgroundColor3 = Color3.fromRGB(255, 171, 173)
+		Slider.BorderColor3 = Color3.fromRGB(255, 171, 173)
+		Slider.Size = UDim2.new(0, 142, 0, 12)
+		Slider.Font = Enum.Font.Nunito
+		Slider.Text = ""
+		Slider.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Slider.TextSize = 20.000
 		SliderCorner.Name = "SliderCorner"
-		SliderCorner.Parent = MainSlider
-		SliderDector.Name = "SliderDector"
-		SliderDector.Parent = ExampleSlider
-		SliderDector.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		SliderDector.BackgroundTransparency = 1.000
-		SliderDector.Position = UDim2.new(1.06329119, 0, 0.413793117, 0)
-		SliderDector.Size = UDim2.new(0, 128, 0, 5)
-		SliderDector.Font = Enum.Font.SourceSans
-		SliderDector.Text = ""
-		SliderDector.TextColor3 = Color3.fromRGB(0, 0, 0)
-		SliderDector.TextSize = 14.000
+		SliderCorner.Parent = Slider
+		SliderShower.Name = "SliderShower"
+		SliderShower.Parent = SliderExample
+		SliderShower.BackgroundColor3 = Color3.fromRGB(66, 66, 66)
+		SliderShower.Position = UDim2.new(1.05263162, 0, -0.636363626, 0)
+		SliderShower.Size = UDim2.new(0, 44, 0, 14)
+		SliderShower.Font = Enum.Font.SourceSans
+		SliderShower.Text = "100"
+		SliderShower.TextColor3 = Color3.fromRGB(255, 255, 255)
+		SliderShower.TextSize = 14.000
+		SliderShower.Visible = false
+		SliderShowerCorner.Name = "SliderShowerCorner"
+		SliderShowerCorner.Parent = SliderShower
 		local holdingSlider = false
-		local count = 0 
-		for i,v in ipairs(ExampleSlider.Parent:GetChildren()) do
-			count = count + 1 
-		end
-		count = count - 3
-		ExampleSlider.Parent.Parent.Size = UDim2.new(0,225,0,26 + (35.25 * count) + 5)
-		SliderDector.MouseButton1Down:connect(function()
+		SliderClickDetector.MouseButton1Down:connect(function()
 			holdingSlider = true
 		end)
-		SliderDector.MouseButton1Up:connect(function()
+		SliderClickDetector.MouseButton1Up:connect(function()
 			holdingSlider = false
 		end)
 		local function onInputEnded(input, gameProcessed)
@@ -403,35 +407,36 @@ function ScellepLibrary:CreateWindow(gameNameVar)
 				holdingSlider = false 
 			end
 		end
-		UserInputService.InputEnded:Connect(onInputEnded)
 		local mouse = game.Players.LocalPlayer:GetMouse()
-
+		UserInputService.InputEnded:Connect(onInputEnded)
 		game:GetService("RunService").RenderStepped:Connect(function(step)
 			if holdingSlider then 
+				SliderShower.Visible = true
 				local mouseX = mouse.X   
-				if MainSlider.AbsolutePosition.X < mouseX then
-					local localMouseX = (mouseX - MainSlider.AbsolutePosition.X)
+				if Slider.AbsolutePosition.X < mouseX then
+					local localMouseX = (mouseX - Slider.AbsolutePosition.X)
 					if localMouseX < SliderBG.AbsoluteSize.X + 1 then
-						MainSlider.Size = UDim2.new(0, localMouseX, 0, SliderBG.AbsoluteSize.Y)
+						SliderShower.Position = UDim2.new(0,localMouseX + 50,-0.896, 0)
+						Slider.Size = UDim2.new(0, localMouseX, 0, SliderBG.AbsoluteSize.Y)
 						local maxSize = SliderBG.AbsoluteSize.X
 						local size = localMouseX
-						local num = max * (size / maxSize)
+						local num = maxNum * (size / maxSize)
+						num = num + minNum
 						num = round(num, roundAmount)
-						num = num + min
-						SliderAmountLabel.Text = tostring(num)
+						SliderShower.Text = tostring(num)
+						if num == minNum then 
+							Slider.Visible = false
+						else 
+							Slider.Visible = true
+						end
 						func(num)
 					end
 				end
+			else
+				SliderShower.Visible = false
 			end
-		end)
-
+		end)		
 	end
-    game:GetService("UserInputService").InputBegan:connect(function(input,proc)
-    if not proc and input.KeyCode == Enum.KeyCode.RightControl then
-        MainFrame.Visible = not MainFrame.Visible
-    end
-end)
-	return LibFunctions
+	return loaderFuncs
 end
-return ScellepLibrary
-
+return scellepLib
