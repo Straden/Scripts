@@ -1,10 +1,3 @@
-_G.BBconfig = {
-    espColor = Color3.fromRGB(255,0,0),
-    fovColor = Color3.fromRGB(255,255,255),
-    fovAmount = 300,
-    aimbotSmoothness = 2,
-    flySpeed = 90
-}
 local client = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local mouse = client:GetMouse()
