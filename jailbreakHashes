@@ -11,7 +11,7 @@ for a,b in next, getreg() do
        if #g == 8 then
         if #tostring(h) == 37 then
          index = index + 1
-         if index == 38 then 
+         if index == 219 then 
                 hashes.arrest = h
             end
         end
