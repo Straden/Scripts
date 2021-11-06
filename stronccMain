@@ -1,3 +1,6 @@
+if not isfile("StronccHub") then 
+    makefolder("StronccHub")
+end
 local gameToLink = {
     [2377868063] = "https://raw.githubusercontent.com/Straden/Scripts/main/stronccStrucid"
 }
