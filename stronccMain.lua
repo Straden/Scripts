@@ -1,4 +1,4 @@
-if not isfile("StronccHub") then 
+if not isfolder("StronccHub") then 
     makefolder("StronccHub")
 end
 local gameToLink = {
