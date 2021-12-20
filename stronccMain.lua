@@ -10,7 +10,7 @@ local gameToLink = {
 }
 local loadedGame = false
 if not gameToLink[game.PlaceId] then
-    if (string.find((game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name),"AimBlox")) then 
+    if (string.find((game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name):lower(),"aimblox")) then 
         loadstring(game:HttpGet((gameToLink[6808484692]),true))()
         loadedGame = true
     else 
