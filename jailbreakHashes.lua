@@ -14,6 +14,9 @@ for a,b in next, getreg() do
          if index == 219 then 
                 hashes.arrest = h
             end
+            if index == 147 then 
+             hashes.drop = h 
+            end
         end
        end
       end
