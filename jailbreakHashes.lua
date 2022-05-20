@@ -11,11 +11,14 @@ for a,b in next, getreg() do
        if #g == 8 then
         if #tostring(h) == 37 then
          index = index + 1
-         if index == 219 then 
+         if index == 267 then 
                 hashes.arrest = h
             end
             if index == 147 then 
              hashes.drop = h 
+            end
+         if index == 176 then 
+             hashes.punch = h 
             end
         end
        end
